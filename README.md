@@ -1,6 +1,12 @@
 # Homework
 Docker lecture repository at [Avito's Analytics Academy](https://avito-analytics-academy.ru/) Data Science course.
-
+### Step 0:
+Before start:
+```bash
+python3 -m venv myenv
+source myenv/bin/activate
+python3 -u server.py
+```
 ### Step 1: 
 To understand how the application works, install the dependencies and open these urls (using curl or a browser):
 ```bash
@@ -14,7 +20,11 @@ http://127.0.0.1:8080/metrics
 Here you can see how many times you have opened `/books`, `/authors` or some other path. There is also a lot of additional information - server response time, etc.
 
 ### Step 2. 
-Make a Dockerfile which uses python version 3.8 or higher as its base image, install dependencies and run `server.py` on port 8080. And after that build it with tag `server:0.0.1`.
+Make a Dockerfile which uses python version 3.8 or higher as its base image, install dependencies and run `server.py` on port 8080. And after that build it with tag `server:0.0.1`:
+```bash
+docker build -t server:0.0.1 .
+docker run -d server:0.0.1
+```
 
 ### Step 3.
 Run the following commands:
@@ -65,4 +75,11 @@ curl http://127.0.0.1:8080/authors
 Open [grafana](http://localhost:3000/d/_eX4mpl3) in your browser.
 
 ### Step 6.
-Make a docker-compose file.
+Make a docker-compose file:
+```bash
+docker-compose up --build -d
+```
+For stopping:
+```bash
+docker-compose down -v
+```
